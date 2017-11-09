@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block head %}
+<style>
+	.underline {
+	text-decoration: underline;
+	}
+</style>
+{% endblock %}
+{% block header %}
+<h1>
+	Administrator Panel - Fuck off James you will never gain acess to this
+</h1>
+<!-- There is nothing in the comments either, fuck off -->
+<hr>
+{% endblock %}
+{% block content %}
+{% if user %}
+<!-- Add users -->
+<h1 class="underline">
+	Add users
+</h1>
+<form ref="uploadForm" id="uploadForm" action="addnewuser" method="post" enctype="multipart/form-data">
+	<label>Username</label>
+	<input name="username" type="text" >
+	<br>
+	<label>Display name</label>
+	<input name="displayname" type="text" >
+	<br>
+  <label>First name</label>
+	<input name="firstname" type="text" >
+	<br>
+  <label>Last name</label>
+	<input name="lastname" type="text" >
+	<br>
+	<label>Password</label>
+	<input name="password" type="password" >
+	<br>
+	<input type="file" name="sampleFile" />
+	<input type="submit" />
+</form>
+<!-- End Add Users -->
+<hr>
+
+<br><br>
+<h1 class="underline">
+	Change password
+</h1>
+<form action="changepsw" method="post">
+	<label>Username</label>
+	<input name="username" type="text" >
+  <label>New Password</label>
+	<input name="password" type="password" >
+	<input type="submit" />
+</form>
+
+<hr>
+<br><br>
+<h1 class="underline">
+	Change profile pic
+</h1>
+<form action="changepic" method="post" enctype="multipart/form-data">
+	<label>Username</label>
+	<input name="username" type="text" >
+  <br>
+  <label>New Pic</label>
+	<input type="file" name="sampleFile" />
+	<input type="submit" />
+</form>
+
+
+<hr>
+<!-- Block users -->
+<h1 class="underline">
+	Block User
+</h1>
+<form action="blockuser" method="post">
+	<label>Username</label>
+	<input name="username" type="text" >
+	<input type="submit" />
+</form>
+<!-- End Block Users -->
+<br><br>
+<!-- Block users -->
+<h1 class="underline">
+	Un-Block User
+</h1>
+<form action="unblock" method="post">
+	<label>Username</label>
+	<input name="username" type="text" >
+	<input type="submit" />
+</form>
+<!-- End Block Users -->
+<style>
+	body {
+	padding: 25px; 
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+<script></script>
+{% else %}
+<h1>
+	Do you really think I'm dumb enough to not protect this? Btw sorry if you're not James, but it's highly likely
+</h1>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% block content %}
+<form action="/login" method="post">
+	<div>
+    <p id="error">
+      
+    </p>
+	<input placeholder="Username" type="text" name="username"/><br/>
+	<input placeholder="Password" type="password" name="password"/><br><br>
+	<input type="submit" value="Login"/>
+	</div>
+</form>
+{% endblock %}

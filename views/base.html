@@ -1,0 +1,32 @@
+<!-- view template -->
+<!-- called from your routes in server.js -->
+
+<!-- templating docs: http://mozilla.github.io/nunjucks/ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <meta name="description" content="Stay connected, under IT's radar ;) ">
+    <link rel="shortcut icon" href="https://cdn.glitch.com/b4fe921b-f672-42a9-b674-e090293609f3%2Fwb%20messenger%20ico.png?1506607376269" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    {% block head %}
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      {% block header %}
+      <!-- override 'block header' in your template -->
+      {% endblock %}
+    </header>
+    {% block content %}
+    <!-- override 'block content' in your template -->
+    {% endblock %}
+    
+    {% block scripts %}
+    <!-- override 'block scripts' in your template -->
+    {% endblock %}
+  </body>
+</html>

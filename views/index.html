@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% if user %}
+<link rel="stylesheet" type="text/css" href="messenger.css">
+{% else %}
+<link rel="stylesheet" type="text/css" href="global.css">
+{% endif %}
+
+<!--
+                      _____ 
+                   ,-'     `._ 
+                 ,'           `.        ,-. 
+               ,'               \       ),.\ 
+     ,.       /                  \     /(  \; 
+    /'\\     ,o.        ,ooooo.   \  ,'  `-') 
+    )) )`. d8P"Y8.    ,8P"""""Y8.  `'  .--"' 
+   (`-'   `Y'  `Y8    dP       `'     / 
+    `----.(   __ `    ,' ,---.       ( 
+           ),--.`.   (  ;,---.        ) 
+          / \O_,' )   \  \O_,'        | 
+         ;  `-- ,'       `---'        | 
+         |    -'         `.           | 
+        _;    ,            )          : 
+     _.'|     `.:._   ,.::" `..       | 
+  --'   |   .'     """         `      |`. 
+        |  :;      :   :     _.       |`.`.-'--. 
+        |  ' .     :   :__.,'|/       |  \ 
+        `     \--.__.-'|_|_|-/        /   ) 
+         \     \_   `--^"__,'        ,    | 
+   -hrr- ;  `    `--^---'          ,'     | 
+          \  `                    /      / 
+           \   `    _ _          / 
+            \           `       / 
+             \           '    ,' 
+              `.       ,   _,' 
+                `-.___.---' 
+
+I can't tell if this meme is dead... Yes it is? Have a Pizza instead...
+
+                        ___
+                        |  ~~--.
+                        |%=@%%/
+                        |o%%%/
+                     __ |%%o/
+               _,--~~ | |(_/ ._
+            ,/'  m%%%%| |o/ /  `\.
+           /' m%%o(_)%| |/ /o%%m `\
+         /' %%@=%o%%%o|   /(_)o%%% `\
+        /  %o%%%%%=@%%|  /%%o%%@=%%  \
+       |  (_)%(_)%%o%%| /%%%=@(_)%%%  |
+       | %%o%%%%o%%%(_|/%o%%o%%%%o%%% |
+       | %%o%(_)%%%%%o%(_)%%%o%%o%o%% |
+       |  (_)%%=@%(_)%o%o%%(_)%o(_)%  |
+        \ ~%%o%%%%%o%o%=@%%o%%@%%o%~ /
+         \. ~o%%(_)%%%o%(_)%%(_)o~ ,/
+           \_ ~o%=@%(_)%o%%(_)%~ _/
+             `\_~~o%%%o%%%%%~~_/'
+                `--..____,,--'
+
+You're welcome, now stay the fuck out of my source code... James I know it's you
+
+
+This one's for Yu-Shin
+
+                   _,-%/%|
+               _,-'    \//%\
+           _,-'        \%/|%
+         / / )    __,--  /%\
+         \__/_,-'%(%  ;  %)%
+                 %\%,   %\
+                   '--%'
+
+-->
+
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+{% if user %}
+  {% include "messenger.html" %}
+{% else %}
+  <p>
+   <img id="logo" src="https://cdn.glitch.com/b4fe921b-f672-42a9-b674-e090293609f3%2FWB%20Messenger%20Logo.svg?1506660839073"
+      alt="WB Messenger" />  
+</p>
+
+<div class="center">
+   <h1>
+      WB Messenger
+   </h1>
+   {% include "login.html" %}
+</div>
+{% endif %}
+<br>
+<br>
+<br>
+<hr>
+<p>
+   &copy; William Baum 2017  
+</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js"></script>
+<script>
+if(window.location.hash) {
+      var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+      if (hash == "error") {
+        document.getElementById("error").innerHTML = "There was an error in the data you supplied, please double check and try again";
+      } else {
+        document.getElementById("error").innerHTML = "";
+      }
+  } else {
+     document.getElementById("error").innerHTML = "";
+  }
+</script>
+<!-- 
+
+ __        ______   __    __   ______         __        ______  __     __  ________        ________  __    __  ________        ________  __       __   ______  ________   ______  
+|  \      /      \ |  \  |  \ /      \       |  \      |      \|  \   |  \|        \      |        \|  \  |  \|        \      |        \|  \  _  |  \ /      \|        \ /      \ 
+| $$     |  $$$$$$\| $$\ | $$|  $$$$$$\      | $$       \$$$$$$| $$   | $$| $$$$$$$$       \$$$$$$$$| $$  | $$| $$$$$$$$       \$$$$$$$$| $$ / \ | $$|  $$$$$$\\$$$$$$$$|  $$$$$$\
+| $$     | $$  | $$| $$$\| $$| $$ __\$$      | $$        | $$  | $$   | $$| $$__             | $$   | $$__| $$| $$__             | $$   | $$/  $\| $$| $$__| $$  | $$   | $$___\$$
+| $$     | $$  | $$| $$$$\ $$| $$|    \      | $$        | $$   \$$\ /  $$| $$  \            | $$   | $$    $$| $$  \            | $$   | $$  $$$\ $$| $$    $$  | $$    \$$    \ 
+| $$     | $$  | $$| $$\$$ $$| $$ \$$$$      | $$        | $$    \$$\  $$ | $$$$$            | $$   | $$$$$$$$| $$$$$            | $$   | $$ $$\$$\$$| $$$$$$$$  | $$    _\$$$$$$\
+| $$_____| $$__/ $$| $$ \$$$$| $$__| $$      | $$_____  _| $$_    \$$ $$  | $$_____          | $$   | $$  | $$| $$_____          | $$   | $$$$  \$$$$| $$  | $$  | $$   |  \__| $$
+| $$     \\$$    $$| $$  \$$$ \$$    $$      | $$     \|   $$ \    \$$$   | $$     \         | $$   | $$  | $$| $$     \         | $$   | $$$    \$$$| $$  | $$  | $$    \$$    $$
+ \$$$$$$$$ \$$$$$$  \$$   \$$  \$$$$$$        \$$$$$$$$ \$$$$$$     \$     \$$$$$$$$          \$$    \$$   \$$ \$$$$$$$$          \$$    \$$      \$$ \$$   \$$   \$$     \$$$$$$                                                                                                                                                               
+                                                                                                                                                                                
+-->  
+{% endblock %}
