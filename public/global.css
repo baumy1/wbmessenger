@@ -1,0 +1,59 @@
+/* Import our fonts
+ TODO: Use non googleapis.com link to get around filter */
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Raleway');
+
+/* General Styles */
+body {
+  padding-top: 55px;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 40px;
+}
+
+.center {
+  font-size: 24px;
+  text-align: center;
+  display: inline-block;
+}
+
+.center input {
+  width: 400px;
+  padding: 16px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.center input[name="password"] {
+  margin-top: -1px;
+}
+
+.center input[type="submit"] {
+  background-color: #00719C;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all .5s;
+}
+
+.center input[type="submit"]:hover {
+  background-color: #00415A;
+}
+
+.padder {
+  height: 1px;
+  display: inline-block;
+}
+
+#error {
+  font-size: 17px;
+  color: #e20d00;
+}
+
+#logo {
+  width: 13%;
+  padding: 20px;
+}

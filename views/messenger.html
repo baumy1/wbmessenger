@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WB Messenger</title>
+    <meta name="description" content="Stay connected, under IT's radar ;) ">
+    <link rel="shortcut icon" href="https://cdn.glitch.com/b4fe921b-f672-42a9-b674-e090293609f3%2Fwb%20messenger%20ico.png?1506607376269" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="./messenger.css">
+    <script src="//twemoji.maxcdn.com/2/twemoji.min.js?2.3.1"></script>
+    <style>
+      /* Changes for individual user */
+.main .{{ user.username }} {
+  text-align: right;
+}
+
+.main .{{ user.username }} img, .main .{{ user.username }} .name {
+  display: none;
+}
+
+.main .{{ user.username }} .text .message-content {
+  text-align: left;
+  margin-right: 10px;
+  background-color: #006699;
+  color: white;
+}
+    </style>
+  </head>
+  <body>
+    
+{% if blocked %}
+<div class="container">
+  <h1>
+  Sorry you can't acess this as you have been blocked :(
+</h1>
+<h2>
+  If you believe this is an error get in contact with Will
+</h2>
+{% else %} <!-- End blocked -->
+
+  
+<div class="top">
+<img id="logo" src="https://cdn.glitch.com/b4fe921b-f672-42a9-b674-e090293609f3%2FWB%20Messenger%20Logo.svg?1506660839073">
+
+<div id="personalprofile">
+<img src="http://wbmessenger.glitch.me/willb.jpg">
+  <i class="fa fa-cog" aria-hidden="true"></i>
+</div>
+  
+<ul class="nav nav-tabs justify-content-center">
+  <li class="nav-item">
+    <a href="" class="active nav-link" title="William Baum"><img src="https://wbmessenger.glitch.me/willb.jpg"></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="" title="James Mallinson"><img src="https://wbmessenger.glitch.me/jamesm.jpg"></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#" title="Hannah Senftleben"><img src="https://wbmessenger.glitch.me/hannahs.jpg"></a>
+  </li>
+</ul>
+
+<div class="top2">
+  <div class="newwindow"><i class="fa fa-external-link" aria-hidden="true"></i></div>
+  <h1>Chat Name</h1>
+  <div class="settings"><i class="fa fa-cogs" aria-hidden="true"></i></div>
+</div>
+<hr>
+</div>
+<div class="main">
+  
+</div>
+<div class="bottom">
+  <hr>
+    <div class="emoji-icon"><i class="fa fa-smile-o" aria-hidden="true"></i></div>
+    <form class="messageForm">
+      
+      <input type="text" placeholder="Type your message..." class="message-text">
+      <button type="submit" class="send-btn">Send</button>
+    </form>
+</div>
+  
+    <!-- All the fun scripts that we need -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/c9019f9ead.js"></script>
+    <script>
+      
+      /* Add top and bottom space to .main */
+      $(".main").css("padding-top", $(".top").height() + 10 + "px");
+      $(".main").css("margin-bottom", ($(".bottom").css("height"))) + "px";  
+      var username = "{{user.username}}";
+    
+    </script>
+  <script src="./client.js"></script>
+{% endif %}
+    </div>
+  </body>
+</html>

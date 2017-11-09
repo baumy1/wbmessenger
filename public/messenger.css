@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Raleway');
+
+/* 
+// Top
+*/
+.top {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+}
+
+.active {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+.nav img {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+
+#logo {
+  width: 50px;
+  height: 50px;
+  top: 8px;
+  left: 15px;
+  position: absolute;
+}
+
+#personalprofile img {
+  position: absolute;
+  right: 15px;
+  width: 45px;
+  top: 8px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+#personalprofile i {
+  position: absolute;
+  right: 0px;
+  width: 20px;
+  top: 42px;
+  border-radius: 50%;
+  font-size:15px;
+}
+
+.top2 {
+  padding-top: 7px;
+  text-align: center;
+}
+
+.top2 h1 {
+  font-size: 30px;
+}
+
+.top2 .newwindow {
+  position: absolute;
+  left: 20px;
+  top: 66px;
+  font-size: 28px;
+}
+
+.top2 h1 {
+ font-family: 'Raleway', sans-serif; 
+}
+
+.top2 .settings {
+  position: absolute;
+  right: 20px;
+  top: 66px;
+  font-size: 28px;
+}
+
+.top hr {
+  margin: 0;
+}
+/*
+// End top
+
+// Start Main
+*/
+
+.main .message {
+  display: block;
+  width: 100%;
+  padding-left: 10px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.main .message img {
+  width: 50px;
+  float: left;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.main .message .text {
+  display: inline-block;
+  width: 80%;
+  padding-left: 10px;
+}
+
+.main .message .name {
+  margin: 0 0;
+}
+
+.main .message .message-content {
+  background-color: #ddd;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+/*
+//End Main
+
+// Start Bottom
+*/
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.bottom hr {
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.emoji-icon {
+  margin: 4px 10px 10px 15px;
+  font-size: 24px;
+  display: inline-block;
+}
+
+.messageForm {
+  display: inline-block;
+  width: 90%;
+}
+
+.message-text {
+  width: 90%;
+  padding: 6px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  display: inline-block;
+}
+
+.send-btn {
+  background-color: #006699;
+  border: none;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
