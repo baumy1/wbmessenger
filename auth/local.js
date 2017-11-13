@@ -1,4 +1,4 @@
-module.exports = function (passport, db, admin) {    
+module.exports = function (passport, db, admin) {  
   console.log("Local.js:")
   var Strategy = require('passport-local').Strategy;
   // Configure the local strategy for use by Passport.
