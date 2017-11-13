@@ -22,7 +22,7 @@ admin.initializeApp({
 });
 var db = admin.firestore();
 
-// Exports Firebase data to other files
+// Exports Firebase data and sockets.io to other files
 module.exports = {
   admin: admin,
   io: io
@@ -32,6 +32,9 @@ module.exports = {
 var dbLocal = require('./db');
 var auth = require('./auth')(dbLocal);
 var validator = require('validator');
+
+// Users variable
+var users = dbLocal.users.fetch();
 
 // Configure view engine to render nunjucks templates.
 var nunjucks = require('nunjucks');
@@ -78,32 +81,45 @@ app.get('/admin',
     res.render('admin.html', { title: 'Admin', user: req.user.username == "willb" /* Restricts access to only my account */});
   });
 
+
 // Get group messages
+// Function for getting user info from user id
+function findUserById(id) {
+  for (var i = 0; i < users.length; i++)  {
+    if (users[i].id == id) {
+      return(users[i]);
+    }
+  }
+}
+
 app.post('/getgroup', function(req, res) {
   var htmlMessages = "";
-  db.collection('users').doc("group").collection("messages").get()
+  db.collection('messages').doc("group").collection("messages").get()
     .then((snapshot) => {
         snapshot.forEach((doc) => {
+            var user = findUserById(doc.data().userid);
+            var messageContent = doc.data().messageContent;
             
-            //htmlMessages = htmlMessages + "<div class='message " +  + "'><img src='https://wbmessenger.glitch.me/" + data.from.username + ".jpg'><div class='text'><p class='name'>" + data.from.firstname + "</p><p class='message-content'>" + data.message + "</p></div></div>"
+            htmlMessages = htmlMessages + "<div class='message " + user.username + "'><img src='https://wbmessenger.glitch.me/" + user.username + ".jpg'><div class='text'><p class='name'>" + user.firstname + "</p><p class='message-content'>" + messageContent+ "</p></div></div>";
         });
+        res.send(htmlMessages)
     })
     .catch((err) => {
         console.log('Error getting documents', err);
     });
-  res.send("<h1>Test</h1>")
+    
 })
 
 // New messages
 app.post('/newmessage', function(req, res) {
-    res.sendStatus(200); // Return 'ok'
+    console.log(Date.now());
     var messageContent = req.body.messageContent;
     messageContent = messageContent.replace("<", "&lt;").replace(">", "&gt;"); // Xss protection
   
     // Send the socket
     io.sockets.emit("groupmessage", {from: req.user, message: messageContent, time: req.body.time});
   
-    db.collection("messages").doc("group").collection("messages").add({
+    db.collection("messages").doc("group").collection("messages").doc("" + Date.now()).set({
       userid: req.user.id,
       messageContent: messageContent
     })
@@ -113,12 +129,13 @@ app.post('/newmessage', function(req, res) {
     .catch(function(error) {
       console.error("Error adding document: ", error);
     });
-    
+    res.sendStatus(200); // Return 'ok'
   });
 // End new messages
 
 // Other request handelers
 require('./admin-functions')(app, admin, io);
+require('./personalsettings')(app, admin, io);
 require('./default-handlers')(app, admin);
 
 // Listen for requests

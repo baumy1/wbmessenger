@@ -19,7 +19,7 @@
 <h1 class="underline">
 	Add users
 </h1>
-<form ref="uploadForm" id="uploadForm" action="addnewuser" method="post" enctype="multipart/form-data">
+<form ref="uploadForm" id="uploadForm" action="addnewuser-admin" method="post" enctype="multipart/form-data">
 	<label>Username</label>
 	<input name="username" type="text" >
 	<br>
@@ -45,7 +45,7 @@
 <h1 class="underline">
 	Change password
 </h1>
-<form action="changepsw" method="post">
+<form action="changepsw-admin" method="post">
 	<label>Username</label>
 	<input name="username" type="text" >
   <label>New Password</label>
@@ -58,7 +58,7 @@
 <h1 class="underline">
 	Change profile pic
 </h1>
-<form action="changepic" method="post" enctype="multipart/form-data">
+<form action="changepic-admin" method="post" enctype="multipart/form-data">
 	<label>Username</label>
 	<input name="username" type="text" >
   <br>
@@ -73,7 +73,7 @@
 <h1 class="underline">
 	Block User
 </h1>
-<form action="blockuser" method="post">
+<form action="blockuser-admin" method="post">
 	<label>Username</label>
 	<input name="username" type="text" >
 	<input type="submit" />
@@ -84,7 +84,7 @@
 <h1 class="underline">
 	Un-Block User
 </h1>
-<form action="unblock" method="post">
+<form action="unblock-admin" method="post">
 	<label>Username</label>
 	<input name="username" type="text" >
 	<input type="submit" />

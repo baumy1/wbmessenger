@@ -12,7 +12,7 @@ module.exports = function(app) {
     var db = admin.firestore();
 
     // Start Add new user
-    app.post('/addnewuser', function(req, res) {
+    app.post('/addnewuser-admin', function(req, res) {
 
         if (!req.files)
             return res.status(400).send('No files were uploaded.');
@@ -49,7 +49,7 @@ module.exports = function(app) {
     }) // End add users
     
     // Password change
-    app.post('/changepsw', function(req, res) {
+    app.post('/changepsw-admin', function(req, res) {
         var username = req.body.username;
         var password = req.body.password;
 
@@ -65,7 +65,7 @@ module.exports = function(app) {
     }) // End password change
 
     // Start change picture
-    app.post('/changepic', function(req, res) {
+    app.post('/changepic-admin', function(req, res) {
 
         if (!req.files)
             return res.status(400).send('No files were uploaded.');
@@ -89,7 +89,7 @@ module.exports = function(app) {
     }) // End add users
   
     // Block user
-    app.post('/blockuser', function(req, res) {
+    app.post('/blockuser-admin', function(req, res) {
         var username = req.body.username;
 
         var update = db.collection('users').doc(req.body.username).set({
@@ -105,7 +105,7 @@ module.exports = function(app) {
     }) // End block user
 
     // Unblock user
-    app.post('/unblock', function(req, res) {
+    app.post('/unblock-admin', function(req, res) {
         var username = req.body.username;
         var update = db.collection('users').doc(req.body.username).set({
             blocked: false

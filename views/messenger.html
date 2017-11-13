@@ -41,11 +41,12 @@
 
   
 <div class="top">
+  
 <img id="logo" src="https://cdn.glitch.com/b4fe921b-f672-42a9-b674-e090293609f3%2FWB%20Messenger%20Logo.svg?1506660839073">
 
 <div id="personalprofile">
 <img src="http://wbmessenger.glitch.me/willb.jpg">
-  <i class="fa fa-cog" aria-hidden="true"></i>
+  <i class="fa fa-cog" style="cursor: pointer" id="personalSettings" aria-hidden="true"></i>
 </div>
   
 <ul class="nav nav-tabs justify-content-center">
@@ -79,6 +80,42 @@
       <button type="submit" class="send-btn">Send</button>
     </form>
 </div>
+    
+    <!-- Account settings modal -->
+    <div class="modal fade bd-example-modal-lg" id="personalSettingsModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Update Your Profile</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h5>
+              Profile Picture
+            </h5>
+            <form action="changepic" method="post" enctype="multipart/form-data">
+              <label>Select an image file</label>
+	            <input type="file" name="sampleFile" />
+	            <input type="submit" />
+            </form>
+            <hr>
+            
+            <h5>
+              Password
+            </h5>
+            <form action="changepsw" method="post" class="changepsw">
+	            <input name="password" type="password" placeholder="New Password"><br>
+              <input name="password-confirm" type="password" placeholder="Confirm Password"><br>
+	            <input type="submit" />
+            </form>
+            <hr>
+
+          </div>
+        </div>
+      </div>
+    </div>
   
     <!-- All the fun scripts that we need -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.slim.js"></script>
@@ -87,6 +124,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/c9019f9ead.js"></script>
     <script>
+      
+      /* Open the personal settings modal */
+      $('#personalSettings').click(function () {
+        $('#personalSettingsModal').modal('toggle');
+      });
       
       /* Add top and bottom space to .main */
       $(".main").css("padding-top", $(".top").height() + 10 + "px");

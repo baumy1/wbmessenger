@@ -31,6 +31,8 @@ socket.on('groupmessage',
               audio.play();
             }
             $(".main").append("<div class='message " + data.from.username + "'><img src='https://wbmessenger.glitch.me/" + data.from.username + ".jpg'><div class='text'><p class='name'>" + data.from.firstname + "</p><p class='message-content'>" + data.message + "</p></div></div>");
+
+  
             window.scrollTo(0,document.body.scrollHeight);        
         }
     );
