@@ -1,5 +1,5 @@
 # WB Messenger 2.0 by [William Baum](http://www.william-baum.com)
-WB Messenger is a chat appliaction that has long been a project of mine originally forming as a basic PHP application with a MySQL database with rudementry security at best. Here I am re-writing it in Node to create a generally all rounf better application.
+WB Messenger is a chat appliaction that has long been a project of mine originally forming as a basic PHP application with a MySQL database with rudementry security at best (not to say that this is much better :P ). Here I am re-writing it in Node to create a generally all round better application.
 
 ## Technologies
 
