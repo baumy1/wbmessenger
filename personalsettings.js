@@ -34,4 +34,27 @@ module.exports = function(app) {
         res.status(200).send('<style>@import url(\'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Raleway\'); h1, h2 {font-family: \'Open Sans\', sans-serif; padding-left: 10px;}</style><div><h1>Your profile picture has been updated!</div><h2><a href="../">Return to messenger</h2>');
     }) // End add users
   
+    // Password change
+    app.post('/changepsw', function(req, res) {
+        var username = req.user.username;
+        var password = req.body.password;
+        var passwordConfirm = req.body.passwordconfirm;
+      
+        if (password !== passwordConfirm) {
+          res.send('<style>@import url(\'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Raleway\'); h1, h2 {font-family: \'Open Sans\', sans-serif; padding-left: 10px;}</style><div><h1>The passwords you entered didn\'t match!</div><h2><a href="../">Return to messenger</h2>');
+          return;
+        }
+      
+        var update = db.collection('users').doc(username).set({
+            password: encrypt.encrypt(password)
+        }, {
+            merge: true
+        }).then(function() {
+            dbLocal.users.getData();
+            require("./auth")(dbLocal);
+            res.send('<style>@import url(\'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Raleway\'); h1, h2 {font-family: \'Open Sans\', sans-serif; padding-left: 10px;}</style><div><h1>Your password has been updated</div><h2><a href="../">Return to messenger</h2>');
+        });
+    }) // End password change
+
+  
 }
