@@ -12,7 +12,7 @@ module.exports = function(app) {
     var db = admin.firestore();
 
     // Start Add new user
-    app.post('/addnewuser-admin', function(req, res) {
+    app.post('/addnewuseradmin', function(req, res) {
 
         if (!req.files)
             return res.status(400).send('No files were uploaded.');
